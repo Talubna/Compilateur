@@ -1,0 +1,21 @@
+### Starting build.
+# Target: main.ml.depends, tags: { extension:ml, file:main.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules main.ml > main.ml.depends # cached
+# Target: lexeur.mll, tags: { extension:mll, file:lexeur.mll, lexer, ocaml, ocamllex, quiet }
+/usr/bin/ocamllex.opt -q lexeur.mll # cached
+# Target: lexeur.ml.depends, tags: { extension:ml, file:lexeur.ml, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules lexeur.ml > lexeur.ml.depends # cached
+# Target: parseur.mly, tags: { extension:mly, file:parseur.mly, infer, ocaml, ocamlyacc, parser, quiet }
+/usr/bin/ocamlyacc parseur.mly
+# Target: parseur.mli.depends, tags: { extension:mli, file:parseur.mli, ocaml, ocamldep, quiet }
+/usr/bin/ocamldep.opt -modules parseur.mli > parseur.mli.depends
+# Target: parseur.cmi, tags: { byte, compile, extension:mli, file:parseur.mli, interf, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o parseur.cmi parseur.mli
+# Target: lexeur.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:lexeur.cmo, file:lexeur.ml, implem, ocaml, quiet }
+/usr/bin/ocamlc.opt -c -o lexeur.cmo lexeur.ml
++ /usr/bin/ocamlc.opt -c -o lexeur.cmo lexeur.ml
+File "lexeur.mll", line 17, characters 20-30:
+Error: The constructor NUMBER expects 1 argument(s),
+       but is applied here to 0 argument(s)
+Command exited with code 2.
+# Compilation unsuccessful.
